@@ -1,9 +1,9 @@
 public class update_bit {
     static int updateBit(int n, int bit, int pos) {
-        // for updating bit 1
+        // for updating bit 1 to 0
         // clear operation
-        if (bit == 1) {
-            int bitmask = 1 << pos;
+        int bitmask = 1 << pos;
+        if (bit == 0) {
             int notbitmask = ~(bitmask);
 
             int newNum = notbitmask & n;
@@ -11,11 +11,9 @@ public class update_bit {
             return newNum;
         }
 
-        // for updating 0
+        // for updating 0 t0 1
         // set operation
         else{
-            int bitmask = 1 << pos;
-
             int newNum = bitmask | n;
 
             return newNum;
