@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class count_set_bits{
+public class minimum_bit_flips {
     static void d2b(int n){
         ArrayList<Integer> bin = new ArrayList<>();
         while(n!=0){
@@ -16,20 +16,31 @@ public class count_set_bits{
     }
 
     static int countSetBits(int n){
-        int count =0;
+        int cnt=0;
         while(n!=0){
             n = n&(n-1);
-            d2b(n);
-            count++;
+            cnt++;
+        }
+        return cnt;
+    }
+
+    static int minBitFlips(int s, int g){
+        int flip = s^g;
+        int count = 0;
+        for(int i=0;i<31;i++){
+            if((flip & (1<<i))!=0){
+                count++;
+            }
         }
         return count;
     }
     public static void main(String[] args) {
-        int n=5; //1010
-        d2b(n);
-        System.out.println();
+        int start = 23; //1010
+        int goal = 24; //0111
 
-        int countset = countSetBits(n);
-        System.out.println(countset);
+        d2b(start);
+        d2b(goal);
+
+        System.out.println(minBitFlips(start, goal));
     }
 }
